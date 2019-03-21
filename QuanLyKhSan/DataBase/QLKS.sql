@@ -174,3 +174,56 @@ GO
 EXEC [dbo].[USP_GetallNV]
 
 select *from[dbo].[NHANVIEN]
+go
+----------------------------------------Bảng dịch vụ------------------------------
+-- Lấy ra danh sách
+create procedure SP_DichVu_GetAll
+as
+begin
+	select * from DICHVU
+end
+go
+
+-- Thêm một dịch vụ
+create procedure SP_DichVu_Insert
+	@tenDichVu nvarchar(100),
+	@giaTien int
+as
+begin
+	insert into DICHVU(TENDV, GIATIEN)
+	values(@tenDichVu, @giaTien)
+end
+go
+
+-- Xóa một dịch vụ
+create procedure SP_DichVu_Delete
+	@maDichVu int
+as
+begin
+	delete DICHVU
+	where MADV = @maDichVu
+end
+go
+
+-- Sửa một dịch vụ
+create procedure SP_DichVu_Update
+	@maDichVu int, @tenDichVu nvarchar(50), @giaDichVu int
+as
+begin
+	update DICHVU
+	set TENDV = @tenDichVu, GIATIEN = @giaDichVu
+	where MADV = @maDichVu
+end
+go
+
+-- Tìm kiếm dịch vụ
+create procedure SP_DichVu_Search
+	@searchValue nvarchar(50)
+as
+begin
+	select * from DICHVU
+	where (MADV like N'%'+ @searchValue +'%')
+		  or (TENDV like N'%'+ @searchValue +'%')
+		  or (GIATIEN like N'%'+ @searchValue +'%')
+end
+go

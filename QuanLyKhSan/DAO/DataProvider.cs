@@ -20,7 +20,7 @@ namespace QuanLyKhSan.DAO
 
         private DataProvider() { }
 
-        string connectionSTR = @"Data Source=DESKTOP-L0UGQTO;Initial Catalog=TT_QLKSan;Integrated Security=True";
+        string connectionSTR = @"Data Source=VTP-NGUYENHIEU\SQLEXPRESS;Initial Catalog=TT_QLKSan;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
