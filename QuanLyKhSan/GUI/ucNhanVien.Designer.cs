@@ -67,7 +67,6 @@
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.Size = new System.Drawing.Size(960, 593);
             this.dgvNhanVien.TabIndex = 0;
-            
             // 
             // panel1
             // 

@@ -17,20 +17,26 @@ namespace QuanLyKhSan.GUI
         public ucNhanVien()
         {
            InitializeComponent();
-           // Load();
+            LoadFistTime();
         }
-        void Load()
+        private void LoadFistTime()
         {
-           // dgvNhanVien.DataSource = NvList;
-           // LoadListNV();
-           //  AddBinding();
+            dgvNhanVien.DataSource = NvList;
+            LoadListNV();
+            AddBinding();
 
         }
         void LoadListNV()
         {
-            NvList.DataSource = NhanVienDAO.Instance.GetNV();
-            
-
+            //try
+            //{
+                NvList.DataSource = NhanVienDAO.Instance.GetNV();
+            //}
+            //catch (Exception err)
+            //{
+               // MessageBox.Show("Không tìm thấy danh sách thân nhân. Vui lòng khởi động lại!");
+               // Console.WriteLine(err);
+            //}
         }
         void AddBinding()
         {
@@ -59,7 +65,7 @@ namespace QuanLyKhSan.GUI
             if (txtSearch.Text == "") MessageBox.Show("Chưa nhập thông tin tìm kiếm");
             string str = txtSearch.Text;
             dgvNhanVien.DataSource = NvList;
-            NvList.DataSource = NhanVienDAO.Instance.SearchNV(str);
+        //    NvList.DataSource = NhanVienDAO.Instance.SearchNV(str);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -82,15 +88,15 @@ namespace QuanLyKhSan.GUI
                     int luong;
                     Int32.TryParse(txtLuong.Text, out luong);
                     string sDT = txtSDT.Text; ;
-                    if (NhanVienDAO.Instance.InsertNv(hoTen, ngaySinh, gioiTinh, diaChi , sDT, luong))
-                    {
-                        MessageBox.Show("Thêm nhân viên thành công! ");
-                        LoadListNV();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Có lỗi khi thêm nhân viên! ");
-                    }
+                    //if (NhanVienDAO.Instance.InsertNV(hoTen, ngaySinh, gioiTinh, diaChi , sDT, luong))
+                    //{
+                    //    MessageBox.Show("Thêm nhân viên thành công! ");
+                    //    LoadListNV();
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Có lỗi khi thêm nhân viên! ");
+                    //}
                 }
             }
         }
@@ -106,15 +112,15 @@ namespace QuanLyKhSan.GUI
             {
                 int maNV;
                 Int32.TryParse(lblMaNhanVien.Text, out maNV);
-                if (NhanVienDAO.Instance.DeleteNV(maNV))
-                {
-                    MessageBox.Show("Xóa nhân viên thành công! ");
-                    LoadListNV();
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi khi xóa nhân viên! ");
-                }
+                //if (NhanVienDAO.Instance.DeleteNV(maNV))
+                //{
+                //    MessageBox.Show("Xóa nhân viên thành công! ");
+                //    LoadListNV();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Có lỗi khi xóa nhân viên! ");
+                //}
             }
         }
 
@@ -123,7 +129,7 @@ namespace QuanLyKhSan.GUI
             if (txtSearch.Text == "") MessageBox.Show("Chưa nhập thông tin tìm kiếm");
             string str = txtSearch.Text;
             dgvNhanVien.DataSource = NvList;
-            NvList.DataSource = NhanVienDAO.Instance.SearchNV(str);
+            //NvList.DataSource = NhanVienDAO.Instance.SearchNV(str);
         }
         void Reset()
         {

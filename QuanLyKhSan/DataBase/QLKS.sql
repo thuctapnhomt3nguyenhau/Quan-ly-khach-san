@@ -172,3 +172,5 @@ BEGIN
 END
 GO
 EXEC [dbo].[USP_GetallNV]
+
+select *from[dbo].[NHANVIEN]

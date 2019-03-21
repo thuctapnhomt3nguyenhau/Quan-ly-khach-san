@@ -47,8 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DataProvider.cs" />
-    <Compile Include="DAO\MaNV_DTO.cs" />
     <Compile Include="DAO\NhanVienDAO.cs" />
+    <Compile Include="DTO\MaNV_DTO.cs" />
     <Compile Include="DTO\NhanVienDTO.cs" />
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
