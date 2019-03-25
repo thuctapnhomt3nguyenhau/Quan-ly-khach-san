@@ -85,7 +85,7 @@ CREATE TABLE HOADON(
  GO
 
  -----------------BẢNG NHÂN VIÊN-------------
-ALTER PROC USP_GetDSNV AS SELECT NHANVIEN.MANV,HOTEN,NGAYSINH,GIOITINH,DIACHI,SDT,LUONG FROM dbo.NHANVIEN
+CREATE PROC USP_GetDSNV AS SELECT NHANVIEN.MANV,HOTEN,NGAYSINH,GIOITINH,DIACHI,SDT,LUONG FROM dbo.NHANVIEN
 EXEC USP_GetDSNV
 GO
 
@@ -174,3 +174,131 @@ GO
 EXEC [dbo].[USP_GetallNV]
 
 select *from[dbo].[NHANVIEN]
+GO
+---------------------------------------------THUEPHONG
+CREATE PROC USP_GetDSThuePhong AS
+SELECT MATH,KHACHHANG.MAKH,TENKH,MAPH,NGAYBDTHUE,NGAYTRA,DATCOC FROM dbo.THUEPHONG LEFT JOIN dbo.KHACHHANG ON KHACHHANG.MAKH = THUEPHONG.MAKH
+GO
+EXEC dbo.USP_GetDSThuePhong
+
+INSERT dbo.THUEPHONG
+        ( MAKH ,
+          MAPH ,
+          NGAYBDTHUE ,
+          NGAYTRA ,
+          DATCOC
+        )
+VALUES  ( 1 , -- MAKH - int
+          1 , -- MAPH - int
+          GETDATE() , -- NGAYBDTHUE - date
+          GETDATE() , -- NGAYTRA - date
+          1  -- DATCOC - int
+        )
+		INSERT dbo.PHONG
+		        ( TENPH, MAL, GIATHUE )
+		VALUES  ( N'a', -- TENPH - nvarchar(50)
+		          1, -- MAL - int
+		          0  -- GIATHUE - int
+		          )
+
+GO
+
+CREATE PROC USP_InsertThuePhong
+  @makh INT ,
+  @maph INT ,
+  @ngaybdthue DATE,
+  @ngaytra DATE,
+  @datcoc INT
+AS
+BEGIN
+	INSERT dbo.THUEPHONG
+	        ( MAKH ,
+	          MAPH ,
+	          NGAYBDTHUE ,
+	          NGAYTRA ,
+	          DATCOC
+	        )
+	VALUES  ( @MAKH , -- MAKH - int
+	          @MAPH , -- MAPH - int
+	          @NGAYBDTHUE , -- NGAYBDTHUE - date
+	          @NGAYTRA , -- NGAYTRA - date
+	          @DATCOC  -- DATCOC - int
+	        )
+END
+GO
+CREATE PROC USP_UpdateThuePhong
+  @math INT,
+  @makh INT ,
+  @maph INT ,
+  @ngaybdthue DATE,
+  @ngaytra DATE,
+  @datcoc INT
+AS
+BEGIN
+	UPDATE dbo.THUEPHONG SET MAKH=@makh , MAPH=@maph , NGAYBDTHUE=@ngaybdthue , NGAYTRA=@ngaytra , DATCOC = @datcoc
+	WHERE MATH=@math
+END
+GO
+CREATE PROC USP_DeleteThuePhong
+	@math int
+AS
+BEGIN
+	DELETE FROM dbo.THUEPHONG WHERE MATH=@math
+END
+GO
+CREATE PROC USP_SearchThuePhong
+@search NVARCHAR(100)
+AS
+BEGIN
+	SELECT MATH,KHACHHANG.MAKH,TENKH,MAPH,NGAYBDTHUE,NGAYTRA,DATCOC FROM dbo.THUEPHONG, dbo.KHACHHANG 
+	WHERE KHACHHANG.MAKH = THUEPHONG.MAKH
+	AND KHACHHANG.MAKH LIKE N'%' + @search + '%' OR TENKH LIKE N'%' + @search + '%' OR MATH LIKE N'%' + @search + '%' OR 
+	MAPH LIKE N'%' + @search + '%' OR NGAYBDTHUE LIKE N'%' + @search + '%' OR NGAYTRA LIKE N'%' + @search + '%' OR DATCOC LIKE N'%' + @search + '%'
+END
+
+------------------------------------------Khách hàng
+GO
+CREATE PROC USP_GetListKhachHang
+AS SELECT * FROM dbo.KHACHHANG
+GO
+CREATE PROC USP_InsertKhachHang
+	@tenkh NVARCHAR(100),
+	@diachi NVARCHAR (100),
+	@sdt CHAR(10)
+	AS
+	BEGIN
+		INSERT dbo.KHACHHANG
+		        ( TENKH, DIACHI, SDT )
+		VALUES  ( @tenkh, -- TENKH - nvarchar(100)
+		          @diachi, -- DIACHI - nvarchar(100)
+		          @sdt  -- SDT - char(10)
+		          )
+	END
+	GO
+CREATE PROC USP_UpdateKhachHang
+	@makh INT,
+	@tenkh NVARCHAR(100),
+	@diachi NVARCHAR (100),
+	@sdt CHAR(10)
+AS
+BEGIN
+	UPDATE dbo.KHACHHANG SET TENKH=@tenkh , DIACHI = @diachi , SDT = @sdt WHERE MAKH=@makh
+END
+GO
+CREATE PROC USP_DeleteKhachHang
+	@makh INT
+AS
+BEGIN
+	UPDATE dbo.THUEPHONG SET MAKH = NULL
+	DELETE FROM dbo.KHACHHANG WHERE MAKH=@makh
+END
+GO
+CREATE PROC USP_SearchKhachHang
+@search NVARCHAR(100)
+AS
+BEGIN
+	SELECT * FROM dbo.KHACHHANG WHERE
+	MAKH LIKE N'%' + @search + '%' OR TENKH LIKE N'%' + @search + '%' OR SDT LIKE N'%' + @search + '%' OR 
+	DIACHI LIKE N'%' + @search + '%'
+END
+
