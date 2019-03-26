@@ -55,6 +55,9 @@
     <Compile Include="DAO\ThuePhongDAO.cs" />
     <Compile Include="DTO\KhachHangDTO.cs" />
     <Compile Include="DTO\MAKH_DTO.cs" />
+    <Compile Include="DAO\DichVuDAO.cs" />
+    <Compile Include="DAO\NhanVienDAO.cs" />
+    <Compile Include="DTO\DichVuDTO.cs" />
     <Compile Include="DTO\MaNV_DTO.cs" />
     <Compile Include="DTO\MAPH_DTO.cs" />
     <Compile Include="DTO\NhanVienDTO.cs" />
