@@ -16,3 +16,21 @@ C:\Users\hieun\Desktop\github\Học kì 6\Thực tập nhóm\Quan-ly-khach-san\Q
 C:\Users\hieun\Desktop\github\Học kì 6\Thực tập nhóm\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.csproj.CoreCompileInputs.cache
 C:\Users\hieun\Desktop\github\Học kì 6\Thực tập nhóm\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.exe
 C:\Users\hieun\Desktop\github\Học kì 6\Thực tập nhóm\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.pdb
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.Form1.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.ucDichVu.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.ucKhacHang.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.ucLoaiPhong.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.ucNhanVien.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.ucPhong.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.ucSuDungDichVu.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.ucHoaDon.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.GUI.ucThuePhong.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.Properties.Resources.resources
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.exe
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\obj\Debug\QuanLyKhSan.pdb
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\bin\Debug\QuanLyKhSan.exe.config
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\bin\Debug\QuanLyKhSan.exe
+C:\Users\admin\Desktop\TT_Nhóm Hường\Quan-ly-khach-san\QuanLyKhSan\bin\Debug\QuanLyKhSan.pdb

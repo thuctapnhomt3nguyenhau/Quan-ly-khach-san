@@ -30,7 +30,7 @@ namespace QuanLyKhSan.GUI
         {
             //try
             //{
-                NvList.DataSource = NhanVienDAO.Instance.GetNV();
+                //NvList.DataSource = NhanVienDAO.Instance.GetNV();
             //}
             //catch (Exception err)
             //{

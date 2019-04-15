@@ -29,29 +29,31 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvPhong = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboMaL = new System.Windows.Forms.ComboBox();
             this.lblMaphong = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnHuy1 = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.lblGia = new System.Windows.Forms.Label();
             this.lblMaLoai = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGiaThue = new System.Windows.Forms.TextBox();
             this.txtTenPhong = new System.Windows.Forms.TextBox();
             this.lblTenPhong = new System.Windows.Forms.Label();
-            this.label = new System.Windows.Forms.Label();
+            this.lblMaP = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblPhong = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,38 +61,56 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dgvPhong);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(1, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1023, 525);
             this.panel1.TabIndex = 0;
             // 
+            // dgvPhong
+            // 
+            this.dgvPhong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhong.Location = new System.Drawing.Point(0, 297);
+            this.dgvPhong.Name = "dgvPhong";
+            this.dgvPhong.Size = new System.Drawing.Size(1023, 228);
+            this.dgvPhong.TabIndex = 2;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel2.Controls.Add(this.cboMaL);
             this.panel2.Controls.Add(this.lblMaphong);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.btnHuy1);
+            this.panel2.Controls.Add(this.btnReset);
             this.panel2.Controls.Add(this.btnHuy);
             this.panel2.Controls.Add(this.btnCapNhat);
-            this.panel2.Controls.Add(this.btnSua);
             this.panel2.Controls.Add(this.btnXoa);
+            this.panel2.Controls.Add(this.btnSua);
             this.panel2.Controls.Add(this.btnThem);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Controls.Add(this.lblGia);
             this.panel2.Controls.Add(this.lblMaLoai);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txtGiaThue);
             this.panel2.Controls.Add(this.txtTenPhong);
             this.panel2.Controls.Add(this.lblTenPhong);
-            this.panel2.Controls.Add(this.label);
+            this.panel2.Controls.Add(this.lblMaP);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1023, 296);
             this.panel2.TabIndex = 1;
+            // 
+            // cboMaL
+            // 
+            this.cboMaL.FormattingEnabled = true;
+            this.cboMaL.Location = new System.Drawing.Point(720, 154);
+            this.cboMaL.Name = "cboMaL";
+            this.cboMaL.Size = new System.Drawing.Size(180, 21);
+            this.cboMaL.TabIndex = 18;
             // 
             // lblMaphong
             // 
@@ -101,23 +121,25 @@
             this.lblMaphong.TabIndex = 17;
             this.lblMaphong.Text = "1";
             // 
-            // button3
+            // btnHuy1
             // 
-            this.button3.Image = global::QuanLyKhSan.Properties.Resources.huy;
-            this.button3.Location = new System.Drawing.Point(875, 217);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 58);
-            this.button3.TabIndex = 16;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnHuy1.Image = global::QuanLyKhSan.Properties.Resources.huy;
+            this.btnHuy1.Location = new System.Drawing.Point(875, 217);
+            this.btnHuy1.Name = "btnHuy1";
+            this.btnHuy1.Size = new System.Drawing.Size(61, 58);
+            this.btnHuy1.TabIndex = 16;
+            this.btnHuy1.UseVisualStyleBackColor = true;
+            this.btnHuy1.Click += new System.EventHandler(this.btnHuy1_Click);
             // 
-            // button2
+            // btnReset
             // 
-            this.button2.Image = global::QuanLyKhSan.Properties.Resources.capnhat;
-            this.button2.Location = new System.Drawing.Point(782, 217);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 58);
-            this.button2.TabIndex = 15;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnReset.Image = global::QuanLyKhSan.Properties.Resources.capnhat;
+            this.btnReset.Location = new System.Drawing.Point(782, 217);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(62, 58);
+            this.btnReset.TabIndex = 15;
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnHuy
             // 
@@ -137,23 +159,25 @@
             this.btnCapNhat.TabIndex = 13;
             this.btnCapNhat.UseVisualStyleBackColor = true;
             // 
-            // btnSua
-            // 
-            this.btnSua.Image = global::QuanLyKhSan.Properties.Resources.xoa;
-            this.btnSua.Location = new System.Drawing.Point(689, 217);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(59, 58);
-            this.btnSua.TabIndex = 12;
-            this.btnSua.UseVisualStyleBackColor = true;
-            // 
             // btnXoa
             // 
-            this.btnXoa.Image = global::QuanLyKhSan.Properties.Resources.sua;
-            this.btnXoa.Location = new System.Drawing.Point(607, 217);
+            this.btnXoa.Image = global::QuanLyKhSan.Properties.Resources.xoa;
+            this.btnXoa.Location = new System.Drawing.Point(689, 217);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(58, 58);
-            this.btnXoa.TabIndex = 11;
+            this.btnXoa.Size = new System.Drawing.Size(59, 58);
+            this.btnXoa.TabIndex = 12;
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Image = global::QuanLyKhSan.Properties.Resources.sua;
+            this.btnSua.Location = new System.Drawing.Point(607, 217);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(58, 58);
+            this.btnSua.TabIndex = 11;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -163,22 +187,24 @@
             this.btnThem.Size = new System.Drawing.Size(65, 58);
             this.btnThem.TabIndex = 10;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // textBox3
+            // txtSearch
             // 
-            this.textBox3.Location = new System.Drawing.Point(193, 255);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(163, 20);
-            this.textBox3.TabIndex = 9;
+            this.txtSearch.Location = new System.Drawing.Point(193, 255);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(163, 20);
+            this.txtSearch.TabIndex = 9;
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Image = global::QuanLyKhSan.Properties.Resources.search_icon;
-            this.button1.Location = new System.Drawing.Point(118, 217);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 58);
-            this.button1.TabIndex = 8;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSearch.Image = global::QuanLyKhSan.Properties.Resources.search_icon;
+            this.btnSearch.Location = new System.Drawing.Point(118, 217);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(59, 58);
+            this.btnSearch.TabIndex = 8;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblGia
             // 
@@ -200,19 +226,12 @@
             this.lblMaLoai.TabIndex = 6;
             this.lblMaLoai.Text = "Mã Loại Phòng :";
             // 
-            // textBox2
+            // txtGiaThue
             // 
-            this.textBox2.Location = new System.Drawing.Point(720, 149);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(720, 181);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtGiaThue.Location = new System.Drawing.Point(720, 181);
+            this.txtGiaThue.Name = "txtGiaThue";
+            this.txtGiaThue.Size = new System.Drawing.Size(180, 20);
+            this.txtGiaThue.TabIndex = 4;
             // 
             // txtTenPhong
             // 
@@ -231,15 +250,15 @@
             this.lblTenPhong.TabIndex = 2;
             this.lblTenPhong.Text = "Tên Phòng :";
             // 
-            // label
+            // lblMaP
             // 
-            this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(83, 138);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(94, 18);
-            this.label.TabIndex = 1;
-            this.label.Text = "Mã Phòng :";
+            this.lblMaP.AutoSize = true;
+            this.lblMaP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaP.Location = new System.Drawing.Point(83, 138);
+            this.lblMaP.Name = "lblMaP";
+            this.lblMaP.Size = new System.Drawing.Size(94, 18);
+            this.lblMaP.TabIndex = 1;
+            this.lblMaP.Text = "Mã Phòng :";
             // 
             // panel3
             // 
@@ -292,8 +311,8 @@
             this.Name = "ucPhong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phòng";
-            this.Load += new System.EventHandler(this.ucPhong_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -309,24 +328,25 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnCapNhat;
-        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblGia;
         private System.Windows.Forms.Label lblMaLoai;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGiaThue;
         private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.Label lblTenPhong;
-        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label lblMaP;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblPhong;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnHuy1;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblMaphong;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.DataGridView dgvPhong;
+        private System.Windows.Forms.ComboBox cboMaL;
     }
 }
