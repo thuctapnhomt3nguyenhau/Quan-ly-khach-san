@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvSDDV = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
             this.txtDonGia = new System.Windows.Forms.TextBox();
             this.lbDonGia = new System.Windows.Forms.Label();
             this.dtpNgaySD = new System.Windows.Forms.DateTimePicker();
             this.lblNgaysudung = new System.Windows.Forms.Label();
             this.cboMadichvu = new System.Windows.Forms.ComboBox();
             this.cboMaThue = new System.Windows.Forms.ComboBox();
-            this.lblMaDV = new System.Windows.Forms.Label();
+            this.lblmasudung = new System.Windows.Forms.Label();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -46,22 +48,31 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblMadichvu = new System.Windows.Forms.Label();
             this.lbMathue = new System.Windows.Forms.Label();
-            this.lblMasddv = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSDDV)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dgvSDDV);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1007, 516);
+            this.panel1.Size = new System.Drawing.Size(1007, 577);
             this.panel1.TabIndex = 0;
+            // 
+            // dgvSDDV
+            // 
+            this.dgvSDDV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSDDV.Location = new System.Drawing.Point(3, 290);
+            this.dgvSDDV.Name = "dgvSDDV";
+            this.dgvSDDV.Size = new System.Drawing.Size(1001, 284);
+            this.dgvSDDV.TabIndex = 6;
             // 
             // panel2
             // 
@@ -74,7 +85,7 @@
             this.panel2.Controls.Add(this.lblNgaysudung);
             this.panel2.Controls.Add(this.cboMadichvu);
             this.panel2.Controls.Add(this.cboMaThue);
-            this.panel2.Controls.Add(this.lblMaDV);
+            this.panel2.Controls.Add(this.lblmasudung);
             this.panel2.Controls.Add(this.btnHuy);
             this.panel2.Controls.Add(this.btnCapNhat);
             this.panel2.Controls.Add(this.btnSua);
@@ -84,13 +95,23 @@
             this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Controls.Add(this.lblMadichvu);
             this.panel2.Controls.Add(this.lbMathue);
-            this.panel2.Controls.Add(this.lblMasddv);
+            this.panel2.Controls.Add(this.label);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1007, 281);
             this.panel2.TabIndex = 5;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Image = global::QuanLyKhSan.Properties.Resources.milk;
+            this.btnBack.Location = new System.Drawing.Point(907, 0);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(97, 107);
+            this.btnBack.TabIndex = 27;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // txtDonGia
             // 
@@ -107,7 +128,7 @@
             this.lbDonGia.Name = "lbDonGia";
             this.lbDonGia.Size = new System.Drawing.Size(80, 18);
             this.lbDonGia.TabIndex = 25;
-            this.lbDonGia.Text = "Đơn Giá :";
+            this.lbDonGia.Text = "Đặt Cọc :";
             // 
             // dtpNgaySD
             // 
@@ -142,14 +163,14 @@
             this.cboMaThue.Size = new System.Drawing.Size(106, 21);
             this.cboMaThue.TabIndex = 21;
             // 
-            // lblMaDV
+            // lblmasudung
             // 
-            this.lblMaDV.AutoSize = true;
-            this.lblMaDV.Location = new System.Drawing.Point(178, 128);
-            this.lblMaDV.Name = "lblMaDV";
-            this.lblMaDV.Size = new System.Drawing.Size(13, 13);
-            this.lblMaDV.TabIndex = 20;
-            this.lblMaDV.Text = "1";
+            this.lblmasudung.AutoSize = true;
+            this.lblmasudung.Location = new System.Drawing.Point(178, 128);
+            this.lblmasudung.Name = "lblmasudung";
+            this.lblmasudung.Size = new System.Drawing.Size(13, 13);
+            this.lblmasudung.TabIndex = 20;
+            this.lblmasudung.Text = "1";
             // 
             // btnHuy
             // 
@@ -177,6 +198,7 @@
             this.btnSua.Size = new System.Drawing.Size(53, 54);
             this.btnSua.TabIndex = 17;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -186,6 +208,7 @@
             this.btnXoa.Size = new System.Drawing.Size(55, 54);
             this.btnXoa.TabIndex = 16;
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
@@ -195,6 +218,7 @@
             this.btnThem.Size = new System.Drawing.Size(57, 56);
             this.btnThem.TabIndex = 15;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtSearch
             // 
@@ -211,6 +235,7 @@
             this.btnSearch.Size = new System.Drawing.Size(59, 57);
             this.btnSearch.TabIndex = 13;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblMadichvu
             // 
@@ -232,15 +257,15 @@
             this.lbMathue.TabIndex = 4;
             this.lbMathue.Text = "Mã Thuê : ";
             // 
-            // lblMasddv
+            // label
             // 
-            this.lblMasddv.AutoSize = true;
-            this.lblMasddv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMasddv.Location = new System.Drawing.Point(19, 124);
-            this.lblMasddv.Name = "lblMasddv";
-            this.lblMasddv.Size = new System.Drawing.Size(142, 18);
-            this.lblMasddv.TabIndex = 3;
-            this.lblMasddv.Text = "Mã  SD Dịch Vụ  :";
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(19, 124);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(142, 18);
+            this.label.TabIndex = 3;
+            this.label.Text = "Mã  SD Dịch Vụ  :";
             // 
             // label1
             // 
@@ -262,27 +287,18 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnBack
-            // 
-            this.btnBack.Image = global::QuanLyKhSan.Properties.Resources.milk;
-            this.btnBack.Location = new System.Drawing.Point(907, 0);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(97, 107);
-            this.btnBack.TabIndex = 27;
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // ucSuDungDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 521);
+            this.ClientSize = new System.Drawing.Size(1010, 581);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
             this.Name = "ucSuDungDichVu";
             this.Text = "Sử Dụng Dịch Vụ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSDDV)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -300,7 +316,7 @@
         private System.Windows.Forms.Label lblNgaysudung;
         private System.Windows.Forms.ComboBox cboMadichvu;
         private System.Windows.Forms.ComboBox cboMaThue;
-        private System.Windows.Forms.Label lblMaDV;
+        private System.Windows.Forms.Label lblmasudung;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnSua;
@@ -310,9 +326,10 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblMadichvu;
         private System.Windows.Forms.Label lbMathue;
-        private System.Windows.Forms.Label lblMasddv;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.DataGridView dgvSDDV;
     }
 }

@@ -78,7 +78,7 @@ namespace QuanLyKhSan.GUI
             this.Close();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             double check;
             if (MessageBox.Show("Bạn có thật sự muốn thuê phòng cho khách hàng có mã là: " + cboMaKhach.Text, "Thông báo", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
@@ -113,7 +113,7 @@ namespace QuanLyKhSan.GUI
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnSua_Click(object sender, EventArgs e)
         {
             double check;
             if (MessageBox.Show("Bạn có thật sự muốn sửa thông tin thuê phòng có mã là: " + lblmathuephong.Text, "Thông báo", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
@@ -150,7 +150,7 @@ namespace QuanLyKhSan.GUI
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn xóa thông tin thuê phòng có mã là: " + lblmathuephong.Text, "Thông báo", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
@@ -168,7 +168,7 @@ namespace QuanLyKhSan.GUI
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCapNhat_Click(object sender, EventArgs e)
         {
             LoadListThuePhong();
         }
@@ -188,7 +188,7 @@ namespace QuanLyKhSan.GUI
             Reset();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             if (txtSearch.Text == "") MessageBox.Show("Chưa nhập thông tin tìm kiếm");
             string str = txtSearch.Text;
@@ -196,5 +196,6 @@ namespace QuanLyKhSan.GUI
             ThuePhongList.DataSource = ThuePhongDAO.Instance.SearchThuePhong(str);
         }
 
+       
     }
 }

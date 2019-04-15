@@ -17,27 +17,47 @@ namespace QuanLyKhSan.DAO
             get { if (instance == null) instance = new NhanVienDAO(); return instance; }
             private set { instance = value; }
         }
-        public List<NhanVienDTO> GetNV()
+        public List<NhanVienDTO> GetDSNV()
         {
             List<NhanVienDTO> list = new List<NhanVienDTO>();
-            DataTable data = DataProvider.Instance.ExecuteQuery("dbo.USP_GetDSNV");
+            DataTable data = DataProvider.Instance.ExecuteQuery("dbo.USP_NHANVIEN_Getall");
             foreach (DataRow item in data.Rows)
             {
-                NhanVienDTO sv = new NhanVienDTO(item);
-                list.Add(sv);
+                NhanVienDTO nhanVien = new NhanVienDTO(item);
+                list.Add(nhanVien);
             }
             return list;
         }
-        public List<MaNV_DTO> GetListMaNV()
+        public bool InsertNV(string hoten, DateTime ngsinh, string gioitinh, string diachi, string sdt, int luong)
         {
-            List<MaNV_DTO> maLopList = new List<MaNV_DTO>();
-            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT MANV FROM dbo.NHANVIEN");
+            int result = DataProvider.Instance.ExecuteNonQuery(" EXEC USP_NHANVIEN_Insert @hoten , @ngsinh , @gioitinh , @diachi , @sdt , @luong ", new object[] { hoten, ngsinh, gioitinh, diachi, sdt, luong });
+
+            return result > 0;
+        }
+        public bool UpdateNV(int maNV, string hoten, DateTime ngsinh, string gioitinh, string diachi, string sdt, int luong)
+        {
+            int result = DataProvider.Instance.ExecuteNonQuery(" EXEC USP_NHANVIEN_Update @maNV , @hoten , @ngsinh , @gioitinh , @diachi , @sdt , @luong ", new object[] { maNV, hoten, ngsinh, gioitinh, diachi, sdt, luong });
+
+            return result > 0;
+        }
+        public bool DeleteNV(int maNV)
+        {
+            int result = DataProvider.Instance.ExecuteNonQuery(" EXEC USP_NHANVIEN_Delete @maNV ", new object[] { maNV });
+
+            return result > 0;
+        }
+        public List<NhanVienDTO> SearchNV(string str)
+        {
+            List<NhanVienDTO> NhanVienList = new List<NhanVienDTO>();
+            DataTable data = DataProvider.Instance.ExecuteQuery("EXEC USP_NHANVIEN_Search @search ", new object[] { str });
             foreach (DataRow item in data.Rows)
             {
-                MaNV_DTO maLop = new MaNV_DTO(item);
-                maLopList.Add(maLop);
+                NhanVienDTO nhan = new NhanVienDTO(item);
+                NhanVienList.Add(nhan);
             }
-            return maLopList;
+            return NhanVienList;
         }
+
+        
     }
 }

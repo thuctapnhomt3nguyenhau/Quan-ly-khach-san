@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvHoaDon = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.lblGhichu = new System.Windows.Forms.Label();
             this.dtpNgayTT = new System.Windows.Forms.DateTimePicker();
@@ -37,7 +39,7 @@
             this.lblMaNV = new System.Windows.Forms.Label();
             this.cboMaNV = new System.Windows.Forms.ComboBox();
             this.cboMathue = new System.Windows.Forms.ComboBox();
-            this.lblMaDV = new System.Windows.Forms.Label();
+            this.lblMaHD = new System.Windows.Forms.Label();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -51,19 +53,29 @@
             this.lblMadichvu = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dgvHoaDon);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1006, 555);
             this.panel1.TabIndex = 0;
+            // 
+            // dgvHoaDon
+            // 
+            this.dgvHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHoaDon.Location = new System.Drawing.Point(4, 290);
+            this.dgvHoaDon.Name = "dgvHoaDon";
+            this.dgvHoaDon.Size = new System.Drawing.Size(999, 262);
+            this.dgvHoaDon.TabIndex = 7;
             // 
             // panel2
             // 
@@ -77,7 +89,7 @@
             this.panel2.Controls.Add(this.lblMaNV);
             this.panel2.Controls.Add(this.cboMaNV);
             this.panel2.Controls.Add(this.cboMathue);
-            this.panel2.Controls.Add(this.lblMaDV);
+            this.panel2.Controls.Add(this.lblMaHD);
             this.panel2.Controls.Add(this.btnHuy);
             this.panel2.Controls.Add(this.btnCapNhat);
             this.panel2.Controls.Add(this.btnSua);
@@ -95,6 +107,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1006, 281);
             this.panel2.TabIndex = 6;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Image = global::QuanLyKhSan.Properties.Resources.milk;
+            this.btnBack.Location = new System.Drawing.Point(900, 0);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(103, 107);
+            this.btnBack.TabIndex = 28;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // txtGhiChu
             // 
@@ -156,14 +178,14 @@
             this.cboMathue.Size = new System.Drawing.Size(113, 21);
             this.cboMathue.TabIndex = 21;
             // 
-            // lblMaDV
+            // lblMaHD
             // 
-            this.lblMaDV.AutoSize = true;
-            this.lblMaDV.Location = new System.Drawing.Point(168, 134);
-            this.lblMaDV.Name = "lblMaDV";
-            this.lblMaDV.Size = new System.Drawing.Size(13, 13);
-            this.lblMaDV.TabIndex = 20;
-            this.lblMaDV.Text = "1";
+            this.lblMaHD.AutoSize = true;
+            this.lblMaHD.Location = new System.Drawing.Point(168, 134);
+            this.lblMaHD.Name = "lblMaHD";
+            this.lblMaHD.Size = new System.Drawing.Size(13, 13);
+            this.lblMaHD.TabIndex = 20;
+            this.lblMaHD.Text = "1";
             // 
             // btnHuy
             // 
@@ -173,6 +195,7 @@
             this.btnHuy.Size = new System.Drawing.Size(57, 54);
             this.btnHuy.TabIndex = 19;
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnCapNhat
             // 
@@ -182,6 +205,7 @@
             this.btnCapNhat.Size = new System.Drawing.Size(55, 54);
             this.btnCapNhat.TabIndex = 18;
             this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // btnSua
             // 
@@ -191,6 +215,7 @@
             this.btnSua.Size = new System.Drawing.Size(53, 54);
             this.btnSua.TabIndex = 17;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -200,6 +225,7 @@
             this.btnXoa.Size = new System.Drawing.Size(55, 54);
             this.btnXoa.TabIndex = 16;
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
@@ -209,10 +235,11 @@
             this.btnThem.Size = new System.Drawing.Size(57, 56);
             this.btnThem.TabIndex = 15;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(212, 243);
+            this.txtSearch.Location = new System.Drawing.Point(204, 239);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(174, 20);
             this.txtSearch.TabIndex = 14;
@@ -225,6 +252,7 @@
             this.btnSearch.Size = new System.Drawing.Size(59, 57);
             this.btnSearch.TabIndex = 13;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtThanhtien
             // 
@@ -259,9 +287,9 @@
             this.lblMadichvu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMadichvu.Location = new System.Drawing.Point(43, 125);
             this.lblMadichvu.Name = "lblMadichvu";
-            this.lblMadichvu.Size = new System.Drawing.Size(109, 18);
+            this.lblMadichvu.Size = new System.Drawing.Size(118, 18);
             this.lblMadichvu.TabIndex = 3;
-            this.lblMadichvu.Text = "Mã Dịch Vụ  :";
+            this.lblMadichvu.Text = "Mã Hóa Đơn  :";
             // 
             // label1
             // 
@@ -283,16 +311,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnBack
-            // 
-            this.btnBack.Image = global::QuanLyKhSan.Properties.Resources.milk;
-            this.btnBack.Location = new System.Drawing.Point(900, 0);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(103, 107);
-            this.btnBack.TabIndex = 28;
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // ucHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,6 +322,7 @@
             this.Text = "Hóa Đơn";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -315,7 +334,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblMaDV;
+        private System.Windows.Forms.Label lblMaHD;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnSua;
@@ -337,5 +356,6 @@
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label lblGhichu;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.DataGridView dgvHoaDon;
     }
 }

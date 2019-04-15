@@ -77,7 +77,7 @@ namespace QuanLyKhSan.GUI
         {
             ucSuDungDichVu f = new ucSuDungDichVu();
             this.Hide();
-            f.ShowDialog();
+         f.ShowDialog();
             this.Show();
 
         }
@@ -88,6 +88,11 @@ namespace QuanLyKhSan.GUI
             this.Hide();
             f.ShowDialog();
             this.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

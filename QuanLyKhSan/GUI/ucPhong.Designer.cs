@@ -39,11 +39,10 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSreach = new System.Windows.Forms.Button();
             this.lblGia = new System.Windows.Forms.Label();
             this.lblMaLoai = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGiaPhong = new System.Windows.Forms.TextBox();
             this.txtTenPhong = new System.Windows.Forms.TextBox();
             this.lblTenPhong = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
@@ -51,14 +50,18 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.lblPhong = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cboMAL = new System.Windows.Forms.ComboBox();
+            this.dgvPhong = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dgvPhong);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(1, 3);
             this.panel1.Name = "panel1";
@@ -68,6 +71,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel2.Controls.Add(this.cboMAL);
             this.panel2.Controls.Add(this.lblMaphong);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -77,11 +81,10 @@
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnThem);
             this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnSreach);
             this.panel2.Controls.Add(this.lblGia);
             this.panel2.Controls.Add(this.lblMaLoai);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txtGiaPhong);
             this.panel2.Controls.Add(this.txtTenPhong);
             this.panel2.Controls.Add(this.lblTenPhong);
             this.panel2.Controls.Add(this.label);
@@ -139,7 +142,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Image = global::QuanLyKhSan.Properties.Resources.xoa;
+            this.btnSua.Image = global::QuanLyKhSan.Properties.Resources.sua;
             this.btnSua.Location = new System.Drawing.Point(689, 217);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(59, 58);
@@ -148,7 +151,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Image = global::QuanLyKhSan.Properties.Resources.sua;
+            this.btnXoa.Image = global::QuanLyKhSan.Properties.Resources.xoa;
             this.btnXoa.Location = new System.Drawing.Point(607, 217);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(58, 58);
@@ -171,14 +174,14 @@
             this.textBox3.Size = new System.Drawing.Size(163, 20);
             this.textBox3.TabIndex = 9;
             // 
-            // button1
+            // btnSreach
             // 
-            this.button1.Image = global::QuanLyKhSan.Properties.Resources.search_icon;
-            this.button1.Location = new System.Drawing.Point(118, 217);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 58);
-            this.button1.TabIndex = 8;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSreach.Image = global::QuanLyKhSan.Properties.Resources.search_icon;
+            this.btnSreach.Location = new System.Drawing.Point(118, 217);
+            this.btnSreach.Name = "btnSreach";
+            this.btnSreach.Size = new System.Drawing.Size(59, 58);
+            this.btnSreach.TabIndex = 8;
+            this.btnSreach.UseVisualStyleBackColor = true;
             // 
             // lblGia
             // 
@@ -200,19 +203,12 @@
             this.lblMaLoai.TabIndex = 6;
             this.lblMaLoai.Text = "Mã Loại Phòng :";
             // 
-            // textBox2
+            // txtGiaPhong
             // 
-            this.textBox2.Location = new System.Drawing.Point(720, 149);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(720, 181);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtGiaPhong.Location = new System.Drawing.Point(720, 181);
+            this.txtGiaPhong.Name = "txtGiaPhong";
+            this.txtGiaPhong.Size = new System.Drawing.Size(180, 20);
+            this.txtGiaPhong.TabIndex = 4;
             // 
             // txtTenPhong
             // 
@@ -282,6 +278,22 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // cboMAL
+            // 
+            this.cboMAL.FormattingEnabled = true;
+            this.cboMAL.Location = new System.Drawing.Point(720, 151);
+            this.cboMAL.Name = "cboMAL";
+            this.cboMAL.Size = new System.Drawing.Size(121, 21);
+            this.cboMAL.TabIndex = 18;
+            // 
+            // dgvPhong
+            // 
+            this.dgvPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhong.Location = new System.Drawing.Point(3, 302);
+            this.dgvPhong.Name = "dgvPhong";
+            this.dgvPhong.Size = new System.Drawing.Size(1017, 216);
+            this.dgvPhong.TabIndex = 2;
+            // 
             // ucPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,6 +311,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -313,11 +326,10 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSreach;
         private System.Windows.Forms.Label lblGia;
         private System.Windows.Forms.Label lblMaLoai;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGiaPhong;
         private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.Label lblTenPhong;
         private System.Windows.Forms.Label label;
@@ -328,5 +340,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblMaphong;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.ComboBox cboMAL;
+        private System.Windows.Forms.DataGridView dgvPhong;
     }
 }

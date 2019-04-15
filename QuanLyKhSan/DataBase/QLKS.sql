@@ -75,22 +75,19 @@ CREATE TABLE HOADON(
  ALTER TABLE dbo.SUDUNGDV ADD CONSTRAINT PK_MASD PRIMARY KEY(MASD)
  ALTER TABLE dbo.HOADON ADD CONSTRAINT PK_MAHD PRIMARY KEY(MAHD)
  ----KHÓA NGOẠI--------
+  ALTER TABLE dbo.THUEPHONG ADD CONSTRAINT FK_MAKH_TH_KH FOREIGN KEY(MAKH) REFERENCES dbo.KHACHHANG(MAKH)
+ ALTER TABLE dbo.THUEPHONG ADD CONSTRAINT FK_MATH_TH_PH FOREIGN KEY(MAPH) REFERENCES dbo.PHONG(MAPH)
+  ALTER TABLE dbo.SUDUNGDV ADD CONSTRAINT FK_MATH_SD_TH FOREIGN KEY(MATH) REFERENCES dbo.THUEPHONG(MATH)
+ ALTER TABLE dbo.SUDUNGDV ADD CONSTRAINT FK_MADV_SD_DV FOREIGN KEY(MADV) REFERENCES dbo.DICHVU(MADV)
  ALTER TABLE dbo.PHONG ADD CONSTRAINT FK_MAPH_PH_LP FOREIGN KEY(MAL) REFERENCES dbo.LOAIPH(MAL)
- ALTER TABLE dbo.THUEPHONG ADD CONSTRAINT FK_MATH_KH FOREIGN KEY(MAKH) REFERENCES dbo.KHACHHANG(MAKH)
- ALTER TABLE dbo.THUEPHONG ADD CONSTRAINT FK_MATH_PH FOREIGN KEY(MATH) REFERENCES dbo.PHONG(MAPH)
- ALTER TABLE dbo.SUDUNGDV ADD CONSTRAINT FK_MASD_TH FOREIGN KEY(MASD) REFERENCES dbo.THUEPHONG(MATH)
- ALTER TABLE dbo.SUDUNGDV ADD CONSTRAINT FK_MASD_DV FOREIGN KEY(MADV) REFERENCES dbo.DICHVU(MADV)
  ALTER TABLE dbo.HOADON ADD CONSTRAINT FK_MATH FOREIGN KEY (MATH) REFERENCES dbo.THUEPHONG (MATH)
  ALTER TABLE dbo.HOADON ADD CONSTRAINT FK_MANV FOREIGN KEY (MATH) REFERENCES dbo.NHANVIEN (MANV)
  GO
 
  -----------------BẢNG NHÂN VIÊN-------------
-CREATE PROC USP_GetDSNV AS SELECT NHANVIEN.MANV,HOTEN,NGAYSINH,GIOITINH,DIACHI,SDT,LUONG FROM dbo.NHANVIEN
-EXEC USP_GetDSNV
-GO
 
 -----INSERT-----------
-CREATE PROC USP_InsertNV
+CREATE PROC USP_NHANVIEN_Insert
 	@hoten NVARCHAR(100),
 	@ngsinh DATE,
 	@gioitinh NVARCHAR(50),
@@ -119,10 +116,10 @@ END
 GO
 
 
-[dbo].[USP_InsertNV]  N'Vũ Thị Hường','1997-05-08',N'Nam Định',N'Nữ','0394249888','15000000'
-
+ [dbo].[USP_NHANVIEN_Insert] N'Vũ Thị Hường','1997-05-08',N'Nam Định',N'Nữ','0394249888','15000000'
+select *from[dbo].[NHANVIEN]
 ----------UPDATE-----------
-CREATE PROC USP_UpdateNV
+CREATE PROC USP_NHANVIEN_Update
 	@manv INT,
 	@hoten NVARCHAR(100),
 	@ngsinh DATE,
@@ -139,7 +136,7 @@ END
 GO
 
 ----------DELETE----------
-CREATE PROC USP_DeleteNV
+CREATE PROC USP_NHANVIEN_Delete
      @manv INT
 AS
 BEGIN
@@ -147,7 +144,7 @@ BEGIN
 END
 GO
 ---------SEARCH--------
-CREATE PROC USP_SearchNV
+CREATE PROC USP_NHANVIEN_Search
     @search NVARCHAR(100)
 AS
 BEGIN
@@ -164,14 +161,14 @@ END
 GO
 
 ---------GETALL-----------
-CREATE PROC USP_GetallNV
+ALTER PROC USP_NHANVIEN_Getall
 AS
 BEGIN
-	SELECT HD.MAHD, NV.MANV , NGAYTT
-	FROM HOADON AS HD, NHANVIEN AS NV
+	SELECT  NV.MANV , HOTEN , NGAYSINH , GIOITINH , DIACHI , SDT, LUONG 
+	FROM  NHANVIEN AS NV
 END
 GO
-EXEC [dbo].[USP_GetallNV]
+EXEC [dbo].[USP_NHANVIEN_Getall]
 
 select *from[dbo].[NHANVIEN]
 GO
@@ -230,36 +227,14 @@ AS
 GO
 
 
-		
-
-
 ---------------------------------------------THUEPHONG
 CREATE PROC USP_GetDSThuePhong AS
 SELECT MATH,KHACHHANG.MAKH,TENKH,MAPH,NGAYBDTHUE,NGAYTRA,DATCOC FROM dbo.THUEPHONG LEFT JOIN dbo.KHACHHANG ON KHACHHANG.MAKH = THUEPHONG.MAKH
 GO
 EXEC dbo.USP_GetDSThuePhong
+go
 
-INSERT dbo.THUEPHONG
-        ( MAKH ,
-          MAPH ,
-          NGAYBDTHUE ,
-          NGAYTRA ,
-          DATCOC
-        )
-VALUES  ( 1 , -- MAKH - int
-          1 , -- MAPH - int
-          GETDATE() , -- NGAYBDTHUE - date
-          GETDATE() , -- NGAYTRA - date
-          1  -- DATCOC - int
-        )
-		INSERT dbo.PHONG
-		        ( TENPH, MAL, GIATHUE )
-		VALUES  ( N'a', -- TENPH - nvarchar(50)
-		          1, -- MAL - int
-		          0  -- GIATHUE - int
-		          )
 
-GO
 
 CREATE PROC USP_InsertThuePhong
   @makh INT ,
@@ -284,6 +259,26 @@ BEGIN
 	        )
 END
 GO
+exec [dbo].[USP_InsertThuePhong] '1','3','20180327','20180328','50000'
+INSERT into dbo.THUEPHONG
+	        ( MAKH ,
+	          MAPH ,
+	          NGAYBDTHUE ,
+	          NGAYTRA ,
+	          DATCOC
+	        )
+	VALUES  ( '1' , -- MAKH - int
+	          '3' , -- MAPH - int
+	          '20180327' , -- NGAYBDTHUE - date
+	          '20180328' , -- NGAYTRA - date
+	          '50000'  -- DATCOC - int
+	        )
+
+select *from[dbo].[KHACHHANG]
+select *from [dbo].[PHONG]
+select *from [dbo].[THUEPHONG]
+insert into 
+-----
 CREATE PROC USP_UpdateThuePhong
   @math INT,
   @makh INT ,
@@ -333,6 +328,12 @@ CREATE PROC USP_InsertKhachHang
 		          )
 	END
 	GO
+	INSERT dbo.KHACHHANG
+		        ( TENKH, DIACHI, SDT )
+		VALUES  ( N'Nguyễn Đức Hậu', -- TENKH - nvarchar(100)
+		          N'Hà Nội', -- DIACHI - nvarchar(100)
+		          '0123456789' -- SDT - char(10)
+		          )
 CREATE PROC USP_UpdateKhachHang
 	@makh INT,
 	@tenkh NVARCHAR(100),
@@ -386,8 +387,11 @@ create procedure SP_DichVu_Delete
 	@maDichVu int
 as
 begin
+	delete SUDUNGDV
+	where MADV = @maDichVu
 	delete DICHVU
 	where MADV = @maDichVu
+
 end
 go
 
@@ -413,3 +417,169 @@ begin
 		  or (GIATIEN like N'%'+ @searchValue +'%')
 end
 go
+SELECT *FROM[dbo].[DICHVU]
+GO
+-----------------------------------SỬ DỤNG DỊCH VỤ -------------------------
+-----GETALL-----
+CREATE PROC USP_SUDUNGDV_GetDS
+AS
+SELECT MASD,MATH,DV.MADV,NGAYSD,DATCOC
+FROM [dbo].[SUDUNGDV] , [dbo].[DICHVU] DV
+WHERE [dbo].[SUDUNGDV].MADV = DV.MADV
+GO
+
+EXEC [dbo].[USP_SUDUNGDV_GetDS]
+GO
+
+------ INSERT----
+CREATE PROC USP_SUDUNGDV_Insert
+    @MATH INT,
+	@MADV INT,
+	@NGAYSD DATE,
+    @DATCOC INT
+AS
+BEGIN 
+    INSERT [dbo].[SUDUNGDV]
+           ( MATH,
+	         MADV,
+		     NGAYSD,
+		     DATCOC  )
+    VALUES ( @MATH,
+             @MADV,
+		     @NGAYSD,
+		     @DATCOC
+                      )
+END
+GO
+INSERT [dbo].[SUDUNGDV]
+       ( MATH,
+	     MADV,
+		 NGAYSD,
+		 DATCOC
+		 )
+VALUES ('1',
+        '1',
+		'20180327',
+		'200000'
+         )
+GO
+----------UPDATE------------
+CREATE PROC USP_SUDUNGDV_Update
+    @MASD INT,
+	@MATH INT,
+	@MADV INT,
+	@NGAYSD DATE,
+    @DATCOC INT
+AS
+BEGIN
+  UPDATE [dbo].[SUDUNGDV]
+  SET MATH = @MATH ,MADV = @MADV ,NGAYSD = @NGAYSD , DATCOC =@DATCOC
+  WHERE MASD = @MASD
+END
+GO
+-------DELETE----------------
+CREATE PROC USP_SUDUNGDV_Delete
+     (@masd INT)
+AS 
+BEGIN
+   DELETE FROM [dbo].[SUDUNGDV]
+   WHERE MASD = @masd
+END
+GO
+-------SERACH--------------------
+CREATE PROC USP_SUDUNGDV_Search
+	@search NVARCHAR(100)
+AS
+BEGIN
+	SELECT MASD ,MATH,DV.MADV ,NGAYSD,DATCOC FROM [dbo].[SUDUNGDV] SD,[dbo].[DICHVU] DV
+	WHERE (SD.MADV = DV.MADV ) 
+	    AND  ((MASD LIKE N'%' + @search + '%')
+	    OR (MATH LIKE  N'%' + @search + '%' )
+	    OR (DV.MADV LIKE  N'%' + @search + '%')
+	    OR (NGAYSD LIKE  N'%' + @search + '%')
+		OR (DATCOC LIKE  N'%' + @search + '%'))
+END
+GO
+
+------------------------------------HÓA ĐƠN -------------------------------
+-----GETALL---
+CREATE PROC USP_HOADON_GETALL
+AS
+SELECT *FROM [dbo].[HOADON]
+GO
+
+EXEC [dbo].[USP_HOADON_GETALL]
+GO
+-----INSSERT----
+CREATE PROC USP_HOADON_INSERT
+       @MATH INT,
+	   @MANV INT,
+       @NGAYTT DATE,
+	   @THANHTIEN INT,
+	   @GHICHU NVARCHAR(50)
+AS
+BEGIN
+  INSERT [dbo].[HOADON]
+         (MATH,
+          MANV,
+          NGAYTT,
+          THANHTIEN,
+          GHICHU
+		     )
+   VALUES (@MATH,
+           @MANV,
+		   @NGAYTT,
+		   @THANHTIEN,
+		   @GHICHU
+               )
+END
+GO
+
+------UPDATE------------
+CREATE PROC USP_HOADON_UPDATE
+     @MAHD  INT,
+	 @MATH INT,
+	 @MANV  INT,
+	 @NGAYTT DATE,
+	 @THANHTIEN INT,
+	 @GHICHU NVARCHAR(50)
+AS
+BEGIN
+    UPDATE [dbo].[HOADON]
+	SET MATH = @MATH , MANV = @MANV ,NGAYTT = @NGAYTT , THANHTIEN = @THANHTIEN , GHICHU = @GHICHU
+	WHERE MAHD = @MAHD
+END
+GO
+-----DELETE------------
+CREATE PROC USP_HOADON_DELETE
+     @mahd int
+AS
+BEGIN
+   DELETE FROM [dbo].[HOADON]
+   WHERE MAHD = @mahd
+END
+GO
+-------SREACH--------------------
+CREATE PROC USP_HOADON_SREACH
+	@search NVARCHAR(100)
+AS
+BEGIN
+	SELECT MAHD,MATH,HD.MANV ,NGAYTT,THANHTIEN,GHICHU FROM [dbo].[HOADON] HD,[dbo].[NHANVIEN] NV
+	WHERE (HD.MANV = NV.MANV ) 
+	    AND  ((MAHD LIKE N'%' + @search + '%')
+	    OR (MATH LIKE  N'%' + @search + '%' )
+	    OR (HD.MANV LIKE  N'%' + @search + '%')
+	    OR (NGAYTT LIKE  N'%' + @search + '%')
+		OR (THANHTIEN LIKE  N'%' + @search + '%')
+		OR (GHICHU LIKE  N'%' + @search + '%'))
+END
+GO
+
+INSERT [dbo].[PHONG] (  TENPH , MAL ,GIATHUE )
+VALUES ( N'AA','1','1000')
+
+select *from [dbo].[PHONG]
+select *from [dbo].[KHACHHANG]
+select *from[dbo].[THUEPHONG]
+select *from [dbo].[NHANVIEN]
+

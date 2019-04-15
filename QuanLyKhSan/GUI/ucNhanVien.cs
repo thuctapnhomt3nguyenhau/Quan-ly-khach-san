@@ -17,27 +17,41 @@ namespace QuanLyKhSan.GUI
         public ucNhanVien()
         {
            InitializeComponent();
-            LoadFistTime();
+            Load();
         }
-        private void LoadFistTime()
+         public void Load()
         {
             dgvNhanVien.DataSource = NvList;
             LoadListNV();
             AddBinding();
 
         }
-        void LoadListNV()
+          void LoadListNV()
         {
-            //try
-            //{
-                NvList.DataSource = NhanVienDAO.Instance.GetNV();
-            //}
-            //catch (Exception err)
-            //{
-               // MessageBox.Show("Không tìm thấy danh sách thân nhân. Vui lòng khởi động lại!");
-               // Console.WriteLine(err);
-            //}
+            
+                NvList.DataSource = NhanVienDAO.Instance.GetDSNV();
+                EditDataGridView();
+            
         }
+
+         void EditDataGridView()
+         {
+            dgvNhanVien.Columns["MaNV"].Visible = false;
+            dgvNhanVien.Columns["HoTen"].HeaderText = "Họ Tên";
+            dgvNhanVien.Columns["HoTen"].Width = 240;
+            dgvNhanVien.Columns["NgaySinh"].HeaderText = "Ngày Sinh";
+            dgvNhanVien.Columns["NgaySinh"].Width = 170;
+            dgvNhanVien.Columns["GioiTinh"].HeaderText = "Giới Tính";
+            dgvNhanVien.Columns["GioiTinh"].Width = 104;
+            dgvNhanVien.Columns["DiaChi"].HeaderText = "Địa Chỉ";
+            dgvNhanVien.Columns["DiaChi"].Width = 190;
+            dgvNhanVien.Columns["SDT"].HeaderText = "Số điện thoại";
+            dgvNhanVien.Columns["SDT"].Width = 140;
+            dgvNhanVien.Columns["Luong"].HeaderText = "Lương";
+            dgvNhanVien.Columns["Luong"].Width = 140;
+            
+         }
+
         void AddBinding()
         {
             lblMaNhanVien.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "MANV", true, DataSourceUpdateMode.Never));
@@ -60,13 +74,7 @@ namespace QuanLyKhSan.GUI
             this.Close();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == "") MessageBox.Show("Chưa nhập thông tin tìm kiếm");
-            string str = txtSearch.Text;
-            dgvNhanVien.DataSource = NvList;
-        //    NvList.DataSource = NhanVienDAO.Instance.SearchNV(str);
-        }
+      
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -76,7 +84,7 @@ namespace QuanLyKhSan.GUI
                 if (txtHoTen.Text == "" || txtDiachi.Text == "" || txtLuong.Text == "" || txtSDT.Text == "" || Int64.TryParse(txtSDT.Text, out check) == false)
                 {
                     MessageBox.Show("Sai hoặc thiếu thông tin");
-                    //                    LoadListNV();
+                                       LoadListNV();
                 }
                 else
                 {
@@ -88,15 +96,15 @@ namespace QuanLyKhSan.GUI
                     int luong;
                     Int32.TryParse(txtLuong.Text, out luong);
                     string sDT = txtSDT.Text; ;
-                    //if (NhanVienDAO.Instance.InsertNV(hoTen, ngaySinh, gioiTinh, diaChi , sDT, luong))
-                    //{
-                    //    MessageBox.Show("Thêm nhân viên thành công! ");
-                    //    LoadListNV();
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Có lỗi khi thêm nhân viên! ");
-                    //}
+                    if (NhanVienDAO.Instance.InsertNV(hoTen, ngaySinh, gioiTinh, diaChi , sDT, luong))
+                    {
+                        MessageBox.Show("Thêm nhân viên thành công! ");
+                        LoadListNV();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi khi thêm nhân viên! ");
+                    }
                 }
             }
         }
@@ -112,24 +120,21 @@ namespace QuanLyKhSan.GUI
             {
                 int maNV;
                 Int32.TryParse(lblMaNhanVien.Text, out maNV);
-                //if (NhanVienDAO.Instance.DeleteNV(maNV))
-                //{
-                //    MessageBox.Show("Xóa nhân viên thành công! ");
-                //    LoadListNV();
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Có lỗi khi xóa nhân viên! ");
-                //}
+                if (NhanVienDAO.Instance.DeleteNV(maNV))
+                {
+                   MessageBox.Show("Xóa nhân viên thành công! ");
+                    LoadListNV();
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi khi xóa nhân viên! ");
+                }
             }
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            if (txtSearch.Text == "") MessageBox.Show("Chưa nhập thông tin tìm kiếm");
-            string str = txtSearch.Text;
-            dgvNhanVien.DataSource = NvList;
-            //NvList.DataSource = NhanVienDAO.Instance.SearchNV(str);
+            LoadListNV();
         }
         void Reset()
         {
@@ -147,7 +152,14 @@ namespace QuanLyKhSan.GUI
                 Reset();
             }
         }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch1.Text == "") MessageBox.Show("Chưa nhập thông tin tìm kiếm");
+            string str = txtSearch1.Text;
+            NvList.DataSource = NhanVienDAO.Instance.SearchNV(str);
 
-        
+            dgvNhanVien.DataSource = NvList;
+        }
+
     }
 }
